@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.5s ease;
+            font-family: "Poppins", sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        #Start {
+            background-color: #28a745;
+        }
+        #Start:hover {
+            background-color: #04b02a;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #Stop {
+            background-color: #f2041c;
+        }
+        #Stop:hover {
+            background-color: #c82333;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(75, 45, 45, 0.3);
+        }</style>
+<body>
+    <h1>BackGround Color Changer</h1>
+
+    <div class="button-container">
+        <button id="Start">Start</button>
+        <button id="Stop">Stop</button>
+    </div>
+
+    <script>
+        //generate a random color
+        const randomcolor=function(){
+            const hex="0123456789ABCDEF"
+            let color="#"
+            for(let i=0;i<6;i++){
+                color+=hex[Math.floor(Math.random()*16)]
+            }
+            return color;
+        }
+        let intervalId=null;
+        const StartChangingColor=function(){
+            intervalId=setInterval(Changebgcolor,1000);
+            function Changebgcolor(){
+                document.body.style.backgroundColor=randomcolor()
+            }
+        };
+
+
+
+        const StopChangingColor=function(){
+            clearInterval(intervalId)
+        };
+
+
+        document.querySelector("#Start").addEventListener
+        ('click',StartChangingColor)
+
+        document.querySelector("#Stop").addEventListener
+        ('click',StopChangingColor)
+        //  console.log(Math.floor((Math.random()*16)))
+    </script>
+</body>
+</html>

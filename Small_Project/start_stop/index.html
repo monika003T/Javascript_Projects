@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start & Stop Task</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Button container */
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Common button styles */
+        button {
+            padding: 12px 30px;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Start button */
+        #Start {
+            background: #28a745;
+            color: white;
+        }
+
+        #Start:hover {
+            background: #218838;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Stop button */
+        #Stop {
+            background: #dc3545;
+            color: white;
+        }
+
+        #Stop:hover {
+            background: #c82333;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Output section */
+        #output {
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hey Lets Play a Game❤️</h1>
+
+    <div class="button-container">
+        <button id="Start">Start</button>
+        <button id="Stop">Stop</button>
+    </div>
+
+    <div id="output"></div>
+
+    <script>
+        let intervalId = null;
+        const startBtn = document.getElementById("Start");
+        const stopBtn = document.getElementById("Stop");
+        const output = document.getElementById("output");
+
+        // Start button click
+        startBtn.addEventListener("click", function() {
+            if (intervalId) return; // prevent multiple intervals
+
+            intervalId = setInterval(function() {
+                output.textContent = `MONIKA → ${new Date().toLocaleTimeString()}`;
+                console.log("MONIKA", Date.now());
+            }, 1000);
+
+            console.log("Task started!");
+        });
+
+        // Stop button click
+        stopBtn.addEventListener("click", function() {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+                output.textContent = "Stopped!";
+                console.log("Task stopped!");
+            }
+        });
+    </script>
+</body>
+</html>
